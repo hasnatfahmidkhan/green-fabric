@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${urbanist.variable} antialiased h-screen grid grid-rows-[auto_1fr]`}
       >
         <Navbar />
-        <main className="max-w-7xl mx-auto w-full py-8">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

@@ -47,7 +47,7 @@ export default function Navbar() {
               {links}
             </ul>
           </div>
-          <Link href={"/"} className="btn btn-ghost text-xl">
+          <Link href={"/"} className="text-2xl font-semibold">
             Green Fabric
           </Link>
         </div>
