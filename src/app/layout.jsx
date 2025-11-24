@@ -2,6 +2,7 @@ import { Urbanist, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/provider/AuthProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,9 +25,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${urbanist.variable} antialiased h-screen grid grid-rows-[auto_1fr]`}
       >
+        <AuthProvider>
         <Navbar />
         <main>{children}</main>
         <Footer />
+        </AuthProvider>
       </body>
     </html>
   );

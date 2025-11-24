@@ -1,6 +1,12 @@
+"use client";
+
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 
 export default function Navbar() {
+  const { user } = useAuth();
+  console.log(user);
+
   const links = (
     <>
       <li>
