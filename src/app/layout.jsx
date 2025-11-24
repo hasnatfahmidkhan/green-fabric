@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/provider/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,10 +27,11 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${urbanist.variable} antialiased h-screen grid grid-rows-[auto_1fr]`}
       >
         <AuthProvider>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </AuthProvider>
+        <Toaster />
       </body>
     </html>
   );

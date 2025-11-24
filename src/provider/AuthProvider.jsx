@@ -1,13 +1,21 @@
 "use client";
 import { useEffect, useState } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { auth } from "@/firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
+import { GoogleAuthProvider } from "firebase/auth";
+
+const googleProvider = new GoogleAuthProvider();
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
+  // google sign in
+  const googleSignIn = () => {
+    setAuthLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
 
   // observer for login user state
   useEffect(() => {
@@ -25,6 +33,7 @@ export default function AuthProvider({ children }) {
     setUser,
     authLoading,
     setAuthLoading,
+    googleSignIn,
   };
 
   return (
