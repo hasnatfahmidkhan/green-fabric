@@ -1,7 +1,6 @@
 "use client";
 
 import useAuth from "@/hooks/useAuth";
-import hover3d from "daisyui/components/hover3d";
 import {
   LogOut,
   PackagePlus,
@@ -11,6 +10,7 @@ import {
   Box,
   Info,
   Phone,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -113,8 +113,8 @@ export default function Navbar() {
                 <li key={idx}>
                   <Link
                     href={link.href}
-                    className={`flex items-center gap-1 ${
-                      isActive ? "text-primary" : "hover:text-primary"
+                    className={`flex items-center gap-1 hover:bg-primary hover:text-white py-2 px-3.5 ${
+                      isActive ? "bg-primary text-white" : "hover:text-primary"
                     }`}
                   >
                     {link.icon && <span>{link.icon}</span>}
@@ -131,7 +131,7 @@ export default function Navbar() {
               <div
                 tabIndex={0}
                 role="button"
-                className="cursor-pointer bg-accent p-0.5 rounded-full"
+                className="cursor-pointer flex items-center justify-center gap-0.5"
               >
                 <Image
                   src={user?.photoURL || "/default-user.jpg"}
@@ -140,19 +140,28 @@ export default function Navbar() {
                   height={40}
                   className="rounded-full object-cover"
                 />
+                <ChevronDown size={20} />
               </div>
               <ul
                 tabIndex="-1"
                 className="dropdown-content menu font-semibold tracking-wide bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm divide-y divide-dashed divide-gray-300 space-y-2"
               >
-                {userLinks.map((link, i) => (
-                  <li key={i} className={`pb-2 ${link.className || ""}`}>
-                    <Link href={link.href}>
-                      {link.icon && <span>{link.icon}</span>}
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {userLinks.map((link, i) => {
+                  const isActive = pathname === link.href;
+                  return (
+                    <li
+                      key={i}
+                      className={`pb-2 ${
+                        isActive ? "text-primary" : ""
+                      }`}
+                    >
+                      <Link href={link.href}>
+                        {link.icon && <span>{link.icon}</span>}
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
                 <li>
                   <button
                     className="text-red-500"

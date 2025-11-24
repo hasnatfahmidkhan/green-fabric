@@ -1,6 +1,6 @@
 import Container from "@/components/Container";
 import React from "react";
 
-export default function products() {
+export default function Products() {
   return <Container>products</Container>;
 }

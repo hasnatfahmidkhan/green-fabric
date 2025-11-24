@@ -3,6 +3,14 @@
   themes: light --default;
 }
 
+@plugin 'daisyui/theme' {
+  name: "light";
+  default: true;
+  --color-primary: #14b8a6;
+  --color-secondary: #000000;
+  --color-base-200: #7e7e7e;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
   display: none;
@@ -22,10 +30,12 @@ body {
   font-family: var(--font-inter), sans-serif;
 }
 
+.heading {
+  @apply text-primary text-center font-bold text-xl uppercase;
+}
 
-
-.heading-font {
-  font-family: var(--font-urbanist), sans-serif;
+.sub-heading {
+  @apply text-3xl md:text-5xl font-bold text-center leading-10 md:leading-16;
 }
 
 .input-style {
