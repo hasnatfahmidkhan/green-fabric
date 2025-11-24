@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import PrimaryBtn from "@/components/PrimaryBtn";
-import Service from "@/components/ui/service/page";
+import FeaturedProduct from "@/components/ui/featuredProduct/FeaturedProduct";
+import Service from "@/components/ui/service/Service";
 
 export default function Home() {
   return (
@@ -28,7 +29,8 @@ export default function Home() {
         </div>
       </div>
       {/*  service  */}
-      <Container className={"py-16 md:py-28"}>
+      <Container className={"py-16 md:py-28 space-y-16 md:space-y-28"}>
+        <FeaturedProduct />
         <Service />
       </Container>
     </section>

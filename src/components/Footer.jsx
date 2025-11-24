@@ -2,8 +2,16 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="max-w-7xl mx-auto bg-base-100 text-base-content p-10">
-      <div className="footer sm:grid-cols-2 lg:grid-cols-4">
+    <footer className=" bg-base-100 text-base-content p-10">
+      <div className="footer sm:footer-horizontal max-w-7xl mx-auto">
+        <aside>
+          <h3 className="logo">Green Fabric</h3>
+          <p>
+            ACME Industries Ltd.
+            <br />
+            Providing reliable tech since 1992
+          </p>
+        </aside>
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
@@ -24,20 +32,6 @@ export default function Footer() {
           <a className="link link-hover">Privacy policy</a>
           <a className="link link-hover">Cookie policy</a>
         </nav>
-        <form>
-          <h6 className="footer-title">Newsletter</h6>
-          <fieldset className="w-80">
-            <label>Enter your email address</label>
-            <div className="join">
-              <input
-                type="text"
-                placeholder="username@site.com"
-                className="input input-bordered join-item"
-              />
-              <button className="btn btn-primary join-item">Subscribe</button>
-            </div>
-          </fieldset>
-        </form>
       </div>
     </footer>
   );

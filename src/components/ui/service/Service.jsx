@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   DollarSign,
   Printer,
@@ -8,8 +9,10 @@ import {
   Shield,
   SlidersHorizontal,
 } from "lucide-react";
+import Heading from "@/components/Heading";
 
 export default function Service() {
+  const [hoverCard, setHoverCard] = useState(null);
   const features = [
     {
       icon: DollarSign,
@@ -18,6 +21,7 @@ export default function Service() {
         "Save on upfront costs with our die and plate-free printing process, making small runs affordable and efficient.",
       bgColor: "bg-yellow-100",
       iconColor: "text-yellow-600",
+      shadowColor: "rgba(217, 119, 6, 0.3)",
     },
     {
       icon: Printer,
@@ -26,6 +30,7 @@ export default function Service() {
         "Achieve sharp, vibrant prints with our state-of-the-art offset printing technology for professional results every time.",
       bgColor: "bg-blue-100",
       iconColor: "text-blue-600",
+      shadowColor: "rgba(37, 99, 235, 0.3)",
     },
     {
       icon: Shield,
@@ -34,6 +39,7 @@ export default function Service() {
         "Your transactions are fully protected with industry-standard encryption and secure payment gateways.",
       bgColor: "bg-green-100",
       iconColor: "text-green-600",
+      shadowColor: "rgba(22, 163, 74, 0.3)",
     },
     {
       icon: SlidersHorizontal,
@@ -42,6 +48,7 @@ export default function Service() {
         "Choose from a wide range of sizes and styles to create a product that perfectly matches your brand and needs.",
       bgColor: "bg-blue-100",
       iconColor: "text-blue-600",
+      shadowColor: "rgba(37, 99, 235, 0.3)",
     },
     {
       icon: Truck,
@@ -50,6 +57,7 @@ export default function Service() {
         "Get your orders delivered quickly and at no extra cost, ensuring you meet deadlines without hassle.",
       bgColor: "bg-red-100",
       iconColor: "text-red-600",
+      shadowColor: "rgba(220, 38, 38, 0.3)",
     },
     {
       icon: Package,
@@ -58,24 +66,33 @@ export default function Service() {
         "Order exactly what you need with low minimums, making it easy for startups and small businesses to get started.",
       bgColor: "bg-yellow-100",
       iconColor: "text-yellow-600",
+      shadowColor: "rgba(217, 119, 6, 0.3)",
     },
   ];
 
   return (
     <section>
-      <div className="max-w-2xl px-2 mx-auto">
-        <h2 className="heading mb-4">Our Service</h2>
+      <div className="max-w-4xl mx-auto">
+        <Heading>Our Service</Heading>
         <p className="sub-heading">
-          What Makes Green Fabric T-Shirts Different?
+          What Makes Green Fabric <br /> T-Shirts Different?
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 md:mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
           const IconComponent = feature.icon;
           return (
             <div
+              onMouseEnter={() => setHoverCard(index)}
+              onMouseLeave={() => setHoverCard(null)}
+              style={{
+                boxShadow:
+                  hoverCard === index
+                    ? `0 20px 40px ${feature.shadowColor}`
+                    : "0 4px 6px rgba(0, 0, 0, 0.1)",
+              }}
               key={index}
-              className="bg-white p-8 rounded-xl border border-gray-100 shadow-md"
+              className="bg-white p-8 rounded-xl border border-gray-100 shadow-md hover:scale-105 transition-transform duration-300 "
             >
               <div className="flex mb-4">
                 <div className={`p-4 rounded-full ${feature.bgColor}`}>

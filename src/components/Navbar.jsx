@@ -100,7 +100,7 @@ export default function Navbar() {
               })}
             </ul>
           </div>
-          <Link href={"/"} className="text-xl md:text-2xl font-semibold">
+          <Link href={"/"} className="logo">
             Green Fabric
           </Link>
         </div>

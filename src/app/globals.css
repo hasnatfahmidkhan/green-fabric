@@ -35,9 +35,13 @@ body {
 }
 
 .sub-heading {
-  @apply text-3xl md:text-5xl font-bold text-center leading-10 md:leading-16;
+  @apply text-3xl md:text-4xl font-bold text-center leading-11 mb-10 md:mb-16;
 }
 
 .input-style {
   @apply input focus:outline-none;
+}
+
+.logo {
+  @apply text-xl md:text-2xl font-semibold;
 }
