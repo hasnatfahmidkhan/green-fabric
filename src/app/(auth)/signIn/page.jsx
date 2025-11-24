@@ -4,11 +4,33 @@ import SocialLogin from "@/components/SocialLogin";
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 export default function SignIn() {
-  const { googleSignIn, setAuthLoading, setUser, authLoading } = useAuth();
-
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const router = useRouter();
+
+  const {
+    googleSignIn,
+    setAuthLoading,
+    setUser,
+    authLoading,
+    signInWithEmailPass,
+  } = useAuth();
+
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    const res = await signInWithEmailPass(email, password);
+    const currentUser = res.user;
+    setUser(currentUser);
+    setAuthLoading(false);
+    router.push("/");
+  };
+
   // sign in with google
   const handleGoogleSignIn = async () => {
     try {
@@ -34,7 +56,7 @@ export default function SignIn() {
               <h2 className="text-center heading-font text-3xl font-semibold mb-4">
                 Sign In
               </h2>
-              <form>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <fieldset className="fieldset space-y-2">
                   {/* Email  */}
                   <div>
@@ -42,19 +64,18 @@ export default function SignIn() {
                       Email<span className="text-red-500">*</span>
                     </label>
                     <input
-                      // disabled={authLoading}
-                      // {...register("email", {
-                      //   required: "Your email is required",
-                      // })}
+                      {...register("email", {
+                        required: "Your email is required",
+                      })}
                       type="email"
                       className="input-style border"
-                      // placeholder="Email"
+                      placeholder="Email"
                     />
-                    {/* {errors.email?.type === "required" && (
-                    <p className="text-red-600 mt-1 tracking-wide">
-                      {errors.email?.message}
-                    </p>
-                  )} */}
+                    {errors.email && (
+                      <p className="text-red-600 mt-1 tracking-wide">
+                        {errors.email?.message}
+                      </p>
+                    )}
                   </div>
 
                   {/* Password  */}
@@ -63,30 +84,25 @@ export default function SignIn() {
                       Password<span className="text-red-500">*</span>
                     </label>
                     <input
-                      // disabled={authLoading}
                       type="password"
                       className="input-style"
                       placeholder="Password"
-                      // {...register("password", {
-                      //   required: "Password is required",
-                      //   pattern: {
-                      //     value:
-                      //       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$#!%*?&]{6,}$/,
-                      //     message:
-                      //       "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 6 characters long",
-                      //   },
-                      // })}
+                      {...register("password", {
+                        required: "Password is required",
+                        pattern: {
+                          value:
+                            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$#!%*?&]{6,}$/,
+                          message:
+                            "Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 6 characters long",
+                        },
+                      })}
                     />
-                    {/* {errors.password?.type === "required" && (
-                    <p className="text-red-600 mt-1 tracking-wide">
-                      {errors.password?.message}
-                    </p>
-                  )} */}
-                    {/* {errors.password?.type === "pattern" && (
-                    <p className="text-red-600 mt-1 tracking-wide">
-                      {errors.password?.message}
-                    </p>
-                  )} */}
+                    {errors.password && (
+                      <p className="text-red-600 mt-1 tracking-wide">
+                        {errors.password?.message}
+                      </p>
+                    )}
+
                     <div>
                       <Link
                         href={"/forget-password"}
@@ -97,18 +113,8 @@ export default function SignIn() {
                     </div>
                   </div>
                   <div>
-                    <button
-                      // disabled={authLoading}
-                      className="btn btn-primary my-2 w-full disabled:bg-primary disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                      {false ? (
-                        <div className="flex items-center gap-2">
-                          <span className="loading loading-spinner"></span>
-                          Loading...
-                        </div>
-                      ) : (
-                        "Sign In"
-                      )}
+                    <button className="btn btn-primary my-2 w-full disabled:bg-primary disabled:opacity-70 disabled:cursor-not-allowed">
+                      Sign In
                     </button>
                     <p className="text-sm text-gray-500 mt-1 tracking-wide">
                       Don&apos;t have any account?{" "}

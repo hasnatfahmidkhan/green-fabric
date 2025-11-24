@@ -1,28 +1,57 @@
 "use client";
 
 import useAuth from "@/hooks/useAuth";
+import hover3d from "daisyui/components/hover3d";
+import {
+  LogOut,
+  PackagePlus,
+  SlidersVertical,
+  UserPen,
+  Home,
+  Box,
+  Info,
+  Phone,
+} from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
-  const { user } = useAuth();
+  const { user, signOutFunc } = useAuth();
+  const pathname = usePathname();
   // console.log(user);
 
-  const links = (
-    <>
-      <li>
-        <Link href={"/"}>Home</Link>
-      </li>
-      <li>
-        <Link href={"/products"}>Products</Link>
-      </li>
-      <li>
-        <Link href={"/about"}>About</Link>
-      </li>
-      <li>
-        <Link href={"/contact"}>Contact</Link>
-      </li>
-    </>
-  );
+  const handleSignOut = () => {
+    try {
+      signOutFunc().then(() => {
+        toast.success("Sign out successfully");
+      });
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const navLinks = [
+    { label: "Home", href: "/", icon: <Home size={18} /> },
+    { label: "Products", href: "/products", icon: <Box size={18} /> },
+    { label: "About", href: "/about", icon: <Info size={18} /> },
+    { label: "Contact", href: "/contact", icon: <Phone size={18} /> },
+  ];
+
+  const userLinks = [
+    { label: "Profile", href: "/profile", icon: <UserPen size={18} /> },
+    {
+      label: "Add Product",
+      href: "/addProduct",
+      icon: <PackagePlus size={18} />,
+    },
+    {
+      label: "Manage Products",
+      href: "/manageProducts",
+      icon: <SlidersVertical size={18} />,
+    },
+  ];
 
   return (
     <div className="bg-base-100 shadow-sm">
@@ -47,10 +76,28 @@ export default function Navbar() {
               </svg>
             </div>
             <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              tabIndex={0}
+              className="menu dropdown-content bg-base-100 shadow-md rounded-box w-52 font-semibold tracking-wide divide-y divide-dashed divide-gray-300 space-y-2"
             >
-              {links}
+              {navLinks.map((link, idx) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <li key={idx} className="pb-2">
+                    <Link
+                      href={link.href}
+                      className={` ${
+                        isActive
+                          ? "text-primary font-bold"
+                          : "hover:text-primary"
+                      }`}
+                    >
+                      {link.icon && <span>{link.icon}</span>}
+                      <span>{link.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <Link href={"/"} className="text-xl md:text-2xl font-semibold">
@@ -59,16 +106,76 @@ export default function Navbar() {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-3 text-base font-medium tracking-wide">
-            {links}
+            {navLinks.map((link, idx) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <li key={idx}>
+                  <Link
+                    href={link.href}
+                    className={`flex items-center gap-1 ${
+                      isActive ? "text-primary" : "hover:text-primary"
+                    }`}
+                  >
+                    {link.icon && <span>{link.icon}</span>}
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link href={"/signIn"} className="btn">
-            Sign In
-          </Link>
-          <Link href={"/signUp"} className="btn hidden md:flex btn-primary ">
-            Sign Up
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="cursor-pointer bg-accent p-0.5 rounded-full"
+              >
+                <Image
+                  src={user?.photoURL || "/default-user.jpg"}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content menu font-semibold tracking-wide bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm divide-y divide-dashed divide-gray-300 space-y-2"
+              >
+                {userLinks.map((link, i) => (
+                  <li key={i} className={`pb-2 ${link.className || ""}`}>
+                    <Link href={link.href}>
+                      {link.icon && <span>{link.icon}</span>}
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    className="text-red-500"
+                    onClick={() => handleSignOut()}
+                  >
+                    <LogOut size={18} /> Sign out
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <>
+              <Link href={"/signIn"} className="btn">
+                Sign In
+              </Link>
+              <Link
+                href={"/signUp"}
+                className="btn hidden md:flex btn-primary "
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </div>

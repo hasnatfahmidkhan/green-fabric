@@ -1,6 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "@/firebase/firebase.config";
 import { AuthContext } from "./AuthContext";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -15,6 +22,32 @@ export default function AuthProvider({ children }) {
   const googleSignIn = () => {
     setAuthLoading(true);
     return signInWithPopup(auth, googleProvider);
+  };
+
+  // sign up with email and password
+  const signUpWithEmailPass = (email, pass) => {
+    setAuthLoading(true);
+    return createUserWithEmailAndPassword(auth, email, pass);
+  };
+
+  // sign in with email and password
+  const signInWithEmailPass = (email, pass) => {
+    setAuthLoading(true);
+    return signInWithEmailAndPassword(auth, email, pass);
+  };
+
+  // update profile
+  const updatePfoileFunc = (updateUser) => {
+    setAuthLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: updateUser.displayName,
+      photoURL: updateUser.photoURL,
+    });
+  };
+
+  // sign out
+  const signOutFunc = () => {
+    return signOut(auth);
   };
 
   // observer for login user state
@@ -34,6 +67,10 @@ export default function AuthProvider({ children }) {
     authLoading,
     setAuthLoading,
     googleSignIn,
+    signOutFunc,
+    updatePfoileFunc,
+    signUpWithEmailPass,
+    signInWithEmailPass,
   };
 
   return (

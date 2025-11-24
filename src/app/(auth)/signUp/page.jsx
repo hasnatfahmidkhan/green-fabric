@@ -10,12 +10,19 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function SignUp() {
-  const { googleSignIn, setAuthLoading, setUser, authLoading } = useAuth();
+  const {
+    googleSignIn,
+    setAuthLoading,
+    setUser,
+    authLoading,
+    updatePfoileFunc,
+    signUpWithEmailPass,
+  } = useAuth();
+
   const router = useRouter();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
@@ -23,11 +30,23 @@ export default function SignUp() {
   const onSubmit = async (data) => {
     const { image, name, email, password } = data;
     const imageFile = image[0];
-    const imageUrl = await uploadImage(imageFile);
-    const upadateData = {
-      displayName: name,
-      photoURL: imageUrl,
-    };
+    try {
+      setAuthLoading(true);
+      const imageUrl = await uploadImage(imageFile);
+      const res = await signUpWithEmailPass(email, password);
+      const currentUser = res.user;
+      const upadateData = {
+        displayName: name,
+        photoURL: imageUrl,
+      };
+      await updatePfoileFunc(upadateData);
+      setUser(currentUser);
+      router.push("/");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setAuthLoading(false);
+    }
   };
 
   // sign in with google
@@ -36,7 +55,6 @@ export default function SignUp() {
       const res = await googleSignIn();
       const currentUser = res.user;
       setUser(currentUser);
-      console.log(currentUser);
       router.push("/");
     } catch (error) {
       toast.error(error.message);
@@ -176,14 +194,7 @@ export default function SignUp() {
                       // disabled={authLoading}
                       className="btn btn-primary my-2 w-full disabled:bg-primary disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      {false ? (
-                        <div className="flex items-center gap-2">
-                          <span className="loading loading-spinner"></span>
-                          Loading...
-                        </div>
-                      ) : (
-                        "Sign Up"
-                      )}
+                      Sign Up
                     </button>
                     <p className="text-sm text-gray-500 mt-1 tracking-wide">
                       Already have an account?{" "}
