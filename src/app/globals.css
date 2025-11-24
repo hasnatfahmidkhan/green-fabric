@@ -10,3 +10,7 @@ body {
 .heading-font {
   font-family: var(--font-urbanist), sans-serif;
 }
+
+.input-style {
+  @apply input focus:outline-none;
+}

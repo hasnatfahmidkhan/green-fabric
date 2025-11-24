@@ -7,20 +7,20 @@ export default function Navbar() {
         <Link href={"/"}>Home</Link>
       </li>
       <li>
-        <Link href={"products"}>Products</Link>
+        <Link href={"/products"}>Products</Link>
       </li>
       <li>
-        <Link href={"about"}>About</Link>
+        <Link href={"/about"}>About</Link>
       </li>
       <li>
-        <Link href={"contact"}>Contact</Link>
+        <Link href={"/contact"}>Contact</Link>
       </li>
     </>
   );
 
   return (
     <div className="bg-base-100 shadow-sm">
-      <nav className="navbar  max-w-7xl mx-auto">
+      <nav className="navbar max-w-7xl mx-auto px-3">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,7 +47,7 @@ export default function Navbar() {
               {links}
             </ul>
           </div>
-          <Link href={"/"} className="text-2xl font-semibold">
+          <Link href={"/"} className="text-xl md:text-2xl font-semibold">
             Green Fabric
           </Link>
         </div>
@@ -56,8 +56,13 @@ export default function Navbar() {
             {links}
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end space-x-4">
+          <Link href={"/signIn"} className="btn">
+            Sign In
+          </Link>
+          <Link href={"/signUp"} className="btn hidden md:flex btn-primary ">
+            Sign Up
+          </Link>
         </div>
       </nav>
     </div>
