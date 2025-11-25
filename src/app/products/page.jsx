@@ -19,13 +19,13 @@ export default function Products() {
   });
   return (
     <Container>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl w-full mx-auto">
         <Heading>All Products</Heading>
         <p className="sub-heading">Quality you can feel in every stitch</p>
       </div>
 
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-0">
           <Search />
           <div className="flex items-center gap-4 ">
             <CategorySort />
@@ -38,7 +38,7 @@ export default function Products() {
             </select>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {tShirts?.map((tShirt) => (
             <ProductCard key={tShirt._id} tShirt={tShirt} />
           ))}

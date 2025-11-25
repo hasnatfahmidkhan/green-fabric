@@ -1,6 +1,6 @@
 "use client";
 
-export default function Modal({
+export default function DeleteModal({
   isOpen,
   title = "Are you sure?",
   message = "This action cannot be undone.",
@@ -20,7 +20,7 @@ export default function Modal({
           <button className="btn btn-error" onClick={onConfirm}>
             Delete
           </button>
-          <button className="btn" onClick={onCancel}>
+          <button className="btn btn-primary btn-outline" onClick={onCancel}>
             Cancel
           </button>
         </div>

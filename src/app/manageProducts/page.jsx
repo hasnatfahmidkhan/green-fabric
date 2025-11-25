@@ -1,18 +1,20 @@
 "use client";
 import Container from "@/components/Container";
 import Heading from "@/components/Heading";
-import Modal from "@/components/Modal";
+import DeleteModal from "@/components/DeleteModal";
 import ProtectedRoutes from "@/components/ProtectedRoutes";
 import { useAxiosSecure } from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { ReceiptText, Trash2 } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ManageProducts() {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedTshirt, setSelectedTshirt] = useState(null);
+  const router = useRouter();
   const axiosSecure = useAxiosSecure();
   const {
     data: tShirts = [],
@@ -86,7 +88,10 @@ export default function ManageProducts() {
                     <td>${price}</td>
                     <th className="space-y-2">
                       <div className="tooltip tooltip-info" data-tip="View">
-                        <button className="btn btn-ghost btn-xs hover:bg-transparent border-none text-primary">
+                        <button
+                          onClick={() => router.push(`/products/${_id}`)}
+                          className="btn btn-ghost btn-xs hover:bg-transparent border-none text-primary"
+                        >
                           <ReceiptText />
                         </button>
                       </div>
@@ -104,7 +109,7 @@ export default function ManageProducts() {
               })}
             </tbody>
           </table>
-          <Modal
+          <DeleteModal
             isOpen={isOpenModal}
             onCancel={() => setIsOpenModal(false)}
             onConfirm={onConfirm}

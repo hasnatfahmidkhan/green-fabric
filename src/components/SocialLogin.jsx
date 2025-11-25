@@ -5,7 +5,7 @@ export default function SocialLogin({ className, children, onClick }) {
   return (
     <button
       onClick={onClick}
-      className={`btn bg-white text-black border-[#e5e5e5] ${className}`}
+      className={`btn btn-primary btn-outline ${className}`}
     >
       <FaGoogle size={15} />
       Login with Google

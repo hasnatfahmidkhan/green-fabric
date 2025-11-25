@@ -172,7 +172,7 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href={"/signIn"} className="btn">
+              <Link href={"/signIn"} className="btn btn-primary btn-outline">
                 Sign In
               </Link>
               <Link

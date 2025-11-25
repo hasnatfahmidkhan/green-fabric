@@ -1,7 +1,9 @@
-import React from "react";
-
-const PrimaryBtn = ({ children, className }) => {
-  return <button className={`btn btn-primary ${className}`}>{children}</button>;
+const PrimaryBtn = ({ children, className, onClick }) => {
+  return (
+    <button onClick={onClick} className={`btn btn-primary ${className}`}>
+      {children}
+    </button>
+  );
 };
 
 export default PrimaryBtn;

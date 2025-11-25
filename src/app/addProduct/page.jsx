@@ -90,7 +90,7 @@ export default function AddProduct() {
         isFeatured: isFeatured === "yes",
         stock: Number(stock),
         specification: (specification || "")
-          .split("/n")
+          .split("\n")
           .map((l) => l.trim())
           .filter((l) => l !== ""),
         image: imageUrl,
