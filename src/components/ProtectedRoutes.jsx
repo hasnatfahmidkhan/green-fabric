@@ -4,12 +4,12 @@ import useAuth from "@/hooks/useAuth";
 import { redirect } from "next/navigation";
 
 export default function ProtectedRoutes({ children }) {
-  const { user, loading } = useAuth();
+  const { user, authLoading } = useAuth();
 
-  if (loading)
+  if (authLoading)
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <span className="loading loading-bars loading-xl"></span>
+        <span className="loading loading-bars loading-xl text-primary"></span>
       </div>
     );
 

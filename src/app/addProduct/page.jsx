@@ -14,7 +14,7 @@ import {
 import { FiImage } from "react-icons/fi";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAxiosSecure } from "@/hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import ProtectedRoutes from "@/components/ProtectedRoutes";
@@ -23,6 +23,14 @@ export default function AddProduct() {
   const [preview, setPreview] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const axiosSecure = useAxiosSecure();
+  const { data: categories = [] } = useQuery({
+    queryKey: ["categories"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get("/categories");
+      return data;
+    },
+  });
+  // react form for validation easily
   const {
     register,
     handleSubmit,
@@ -31,6 +39,8 @@ export default function AddProduct() {
     control,
   } = useForm();
   const queryClient = useQueryClient();
+
+  // react query for post data
   const {
     isPending,
     mutate,
@@ -204,15 +214,17 @@ export default function AddProduct() {
                           {...register("category", {
                             required: "category is required",
                           })}
+                          defaultValue={""}
                           className="select select-bordered w-full focus:select-primary transition-all"
                         >
                           <option value="" disabled>
                             Select Category
                           </option>
-                          <option value="Polo">Polo</option>
-                          <option value="Half Sleeve">Half Sleeve</option>
-                          <option value="Full Sleeve">Full Sleeve</option>
-                          <option value="Oversized">Oversized</option>
+                          {categories?.map((cat) => (
+                            <option value={cat.name} key={cat._id}>
+                              {cat.name}
+                            </option>
+                          ))}
                         </select>
                         {errors.category && (
                           <span className="text-red-500 text-xs">
