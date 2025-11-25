@@ -2,15 +2,15 @@ import PrimaryBtn from "@/components/PrimaryBtn";
 import Image from "next/image";
 
 export default function FeaturedCard({ tShirt }) {
-  const { category, title, shortDescription, price } = tShirt;
+  const { category, title, shortDescription, price, image } = tShirt;
   return (
     <div className="card bg-base-100 shadow-xl border border-gray-100">
       <div className=" p-4">
         <figure className="relative w-full h-64 rounded-lg overflow-hidden">
           <Image
             fill
-            src="/t5.jpg"
-            alt="Shoes"
+            src={image}
+            alt={title}
             style={{ objectFit: "cover" }} // ensures image covers the area
           />
         </figure>

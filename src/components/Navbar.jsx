@@ -54,7 +54,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="bg-base-100 shadow-sm">
+    <div className="bg-base-100 shadow-sm sticky top-0 z-40">
       <nav className="navbar max-w-7xl mx-auto px-3">
         <div className="navbar-start">
           <div className="dropdown">
@@ -151,9 +151,7 @@ export default function Navbar() {
                   return (
                     <li
                       key={i}
-                      className={`pb-2 ${
-                        isActive ? "text-primary" : ""
-                      }`}
+                      className={`pb-2 ${isActive ? "text-primary" : ""}`}
                     >
                       <Link href={link.href}>
                         {link.icon && <span>{link.icon}</span>}

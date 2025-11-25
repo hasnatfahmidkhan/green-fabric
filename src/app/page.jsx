@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import PrimaryBtn from "@/components/PrimaryBtn";
 import FeaturedProduct from "@/components/ui/featuredProduct/FeaturedProduct";
 import Service from "@/components/ui/service/Service";
+import Testimonial from "@/components/ui/Testimonial/Testimonial";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <Container className={"py-16 md:py-28 space-y-16 md:space-y-28"}>
         <FeaturedProduct />
         <Service />
+        {/* <Testimonial /> */}
       </Container>
     </section>
   );

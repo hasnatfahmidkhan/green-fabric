@@ -10,7 +10,9 @@ export default function FeaturedProduct() {
   const { data: tShirts = [], isLoading } = useQuery({
     queryKey: ["t-shirts"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/t-shirts");
+      const { data } = await axiosSecure.get(
+        "/t-shirts?isFeatured=true&limit=6"
+      );
       return data;
     },
   });
