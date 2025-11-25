@@ -3,7 +3,7 @@
 import { useAxiosSecure } from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-export default function CategorySort() {
+export default function CategorySort({ setCategory }) {
   const axiosSecure = useAxiosSecure();
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categories"],
@@ -13,7 +13,11 @@ export default function CategorySort() {
     },
   });
   return (
-    <select className="select select-primary w-fit" defaultValue={""}>
+    <select
+      onChange={(e) => setCategory(e.target.value)}
+      className="select select-primary w-fit"
+      defaultValue={""}
+    >
       <option disabled={true} value={""}>
         Select Category
       </option>

@@ -10,8 +10,10 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import useAuth from "@/hooks/useAuth";
 
 export default function ManageProducts() {
+  const { user } = useAuth();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [selectedTshirt, setSelectedTshirt] = useState(null);
   const router = useRouter();
@@ -21,9 +23,9 @@ export default function ManageProducts() {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["t-shirts"],
+    queryKey: ["t-shirts", user?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/t-shirts");
+      const { data } = await axiosSecure.get(`/t-shirts?email=${user?.email}`);
       return data;
     },
   });
