@@ -19,7 +19,7 @@ export default function Products() {
     <Container>
       <div className="max-w-4xl mx-auto">
         <Heading>All Products</Heading>
-        <p className="sub-heading">Quality you can feel in every stitch.</p>
+        <p className="sub-heading">Quality you can feel in every stitch</p>
       </div>
 
       <div>

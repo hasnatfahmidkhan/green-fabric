@@ -105,7 +105,7 @@ export default function Service() {
               <h3 className="text-lg font-bold text-secondary mb-4">
                 {feature.title}
               </h3>
-              <p className="text-base-200 text-sm mb-6 leading-relaxed">
+              <p className="text-accent text-sm mb-6 leading-relaxed">
                 {feature.description}
               </p>
               <div>

@@ -22,8 +22,7 @@ export default function FeaturedProduct() {
       <div className="max-w-4xl mx-auto">
         <Heading>Featured Products</Heading>
         <p className="sub-heading">
-          Premium Quality Comfort and Style <br /> Every Stitch Designed for
-          You.
+          Premium Quality Comfort and Style <br /> Every Stitch Designed for You
         </p>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">

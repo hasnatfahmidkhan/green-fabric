@@ -8,7 +8,7 @@
   default: true;
   --color-primary: #14b8a6;
   --color-secondary: #000000;
-  --color-base-200: #7e7e7e;
+  --color-accent: #7e7e7e;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
