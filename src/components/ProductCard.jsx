@@ -22,8 +22,9 @@ export default function ProductCard({ tShirt }) {
           </div>
           <span className="font-semibold text-lg">${price}</span>
         </div>
-        <h2 className="card-title">{title}</h2>
-        <p>{shortDescription}</p>
+        <h2 className="card-title truncate text-ellipsis">{title}</h2>
+        <p className="truncate text-ellipsis">{shortDescription}</p>
+
         <div className="card-actions">
           <PrimaryBtn className={"w-full"}>View Details</PrimaryBtn>
         </div>
