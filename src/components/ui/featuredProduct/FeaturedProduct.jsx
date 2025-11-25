@@ -3,7 +3,7 @@ import Heading from "@/components/Heading";
 import { useAxiosSecure } from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import FeaturedCard from "./FeaturedCard";
+import ProductCard from "../../ProductCard";
 
 export default function FeaturedProduct() {
   const axiosSecure = useAxiosSecure();
@@ -28,7 +28,7 @@ export default function FeaturedProduct() {
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {tShirts?.map((tShirt) => (
-          <FeaturedCard key={tShirt._id} tShirt={tShirt} />
+          <ProductCard key={tShirt._id} tShirt={tShirt} />
         ))}
       </div>
     </section>

@@ -1,7 +1,7 @@
 import PrimaryBtn from "@/components/PrimaryBtn";
 import Image from "next/image";
 
-export default function FeaturedCard({ tShirt }) {
+export default function ProductCard({ tShirt }) {
   const { category, title, shortDescription, price, image } = tShirt;
   return (
     <div className="card bg-base-100 shadow-xl border border-gray-100">

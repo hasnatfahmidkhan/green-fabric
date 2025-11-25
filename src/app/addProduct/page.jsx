@@ -20,6 +20,7 @@ import toast from "react-hot-toast";
 
 export default function AddProduct() {
   const [preview, setPreview] = useState(null);
+  const [isUploading, setIsUploading] = useState(false);
   const axiosSecure = useAxiosSecure();
   const {
     register,
@@ -46,45 +47,51 @@ export default function AddProduct() {
   });
 
   const onSubmit = async (data) => {
-    const {
-      title,
-      shortDescription,
-      fullDescription,
-      price,
-      category,
-      sizes,
-      isFeatured,
-      stock,
-      specification,
-      image,
-    } = data;
+    try {
+      setIsUploading(true);
+      const {
+        title,
+        shortDescription,
+        fullDescription,
+        price,
+        category,
+        sizes,
+        isFeatured,
+        stock,
+        specification,
+        image,
+      } = data;
 
-    // Image file
-    const file = image[0];
+      // Image file
+      const file = image[0];
 
-    const imageUrl = await uploadImage(file);
+      const imageUrl = await uploadImage(file);
+      setIsUploading(false);
 
-    // Final product object
-    const product = {
-      title,
-      shortDescription,
-      fullDescription,
-      price: Number(price),
-      category,
-      sizes,
-      isFeatured: isFeatured === "yes",
-      stock: Number(stock),
-      specification: (specification || "")
-        .split("/n")
-        .map((l) => l.trim())
-        .filter((l) => l !== ""),
-      image: imageUrl,
-    };
+      // Final product object
+      const product = {
+        title,
+        shortDescription,
+        fullDescription,
+        price: Number(price),
+        category,
+        sizes,
+        isFeatured: isFeatured === "yes",
+        stock: Number(stock),
+        specification: (specification || "")
+          .split("/n")
+          .map((l) => l.trim())
+          .filter((l) => l !== ""),
+        image: imageUrl,
+      };
 
-    mutate(product);
+      mutate(product);
 
-    reset();
-    setPreview(null);
+      reset();
+      setPreview(null);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const handleImagePreview = (e, field) => {
@@ -105,6 +112,8 @@ export default function AddProduct() {
     const url = URL.createObjectURL(file);
     setPreview(url);
   };
+
+  const isLoading = isUploading || isPending;
 
   return (
     <Container>
@@ -489,10 +498,11 @@ export default function AddProduct() {
               <div className="pt-4">
                 <button className="btn btn-primary w-full h-12 text-base font-semibold rounded-lg hover:shadow-lg transition-all">
                   <Package className="w-5 h-5" />
-                  {isPending ? (
-                    <span className="loading-spinner">
+                  {isLoading ? (
+                    <>
+                      <span className="loading loading-spinner loading-sm"></span>
                       <span>Loading...</span>
-                    </span>
+                    </>
                   ) : (
                     "Add Product"
                   )}

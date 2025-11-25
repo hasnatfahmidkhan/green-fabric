@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${urbanist.variable} antialiased min-h-screen grid grid-rows-[auto_1fr]`}
+        className={`${inter.variable} ${urbanist.variable} antialiased min- h-screen grid grid-rows-[auto_1fr]`}
       >
         <QueryProvider>
           <AuthProvider>
