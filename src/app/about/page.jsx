@@ -7,12 +7,10 @@ import {
   Users,
   Target,
   Heart,
-  Zap,
   TrendingUp,
   Globe,
 } from "lucide-react";
 import { useState } from "react";
-import { FaLeaf, FaRecycle, FaHandshake } from "react-icons/fa";
 
 const missions = [
   {
@@ -143,12 +141,12 @@ export default function About() {
             We decided to take a different approach. We partnered with certified
             organic cotton farms, worked with eco-conscious manufacturers, and
             spent months perfecting the perfect fit and feel. The result?
-            Premium-quality t-shirts that don't compromise on style, comfort, or
-            sustainability.
+            Premium-quality t-shirts that don&apos;t compromise on style,
+            comfort, or sustainability.
           </p>
           <p>
-            Today, we're proud to have served over 50,000 customers across 45
-            countries. But our mission remains the same: to make sustainable
+            Today, we&apos;re proud to have served over 50,000 customers across
+            45 countries. But our mission remains the same: to make sustainable
             fashion accessible to everyone. Every t-shirt we produce represents
             our commitment to a better future.
           </p>
