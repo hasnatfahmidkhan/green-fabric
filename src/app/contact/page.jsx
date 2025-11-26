@@ -288,68 +288,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
-      {/* FAQ Section */}
-      <div>
-        <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-          Frequently Asked Questions
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-          <div className="collapse collapse-plus bg-white border border-teal-100 rounded-lg">
-            <input type="radio" name="my-accordion" defaultChecked />
-            <div className="collapse-title font-semibold text-slate-900">
-              What materials are used in your t-shirts?
-            </div>
-            <div className="collapse-content">
-              <p className="text-slate-500">
-                All our t-shirts are made from 100% organic cotton, certified by
-                international standards. We use eco-friendly dyes that are safe
-                for both people and the environment.
-              </p>
-            </div>
-          </div>
-
-          <div className="collapse collapse-plus bg-white border border-teal-100 rounded-lg">
-            <input type="radio" name="my-accordion" />
-            <div className="collapse-title font-semibold text-slate-900">
-              What is your return policy?
-            </div>
-            <div className="collapse-content">
-              <p className="text-slate-500">
-                We offer a 30-day return policy on all unworn items with
-                original tags attached. Please contact our support team for
-                return authorization.
-              </p>
-            </div>
-          </div>
-
-          <div className="collapse collapse-plus bg-white border border-teal-100 rounded-lg">
-            <input type="radio" name="my-accordion" />
-            <div className="collapse-title font-semibold text-slate-900">
-              How long does shipping take?
-            </div>
-            <div className="collapse-content">
-              <p className="text-slate-500">
-                Standard shipping takes 5-7 business days. We also offer
-                expedited 2-3 day shipping and international options.
-              </p>
-            </div>
-          </div>
-
-          <div className="collapse collapse-plus bg-white border border-teal-100 rounded-lg">
-            <input type="radio" name="my-accordion" />
-            <div className="collapse-title font-semibold text-slate-900">
-              Do you offer bulk orders?
-            </div>
-            <div className="collapse-content">
-              <p className="text-slate-500">
-                Yes! We offer special pricing for bulk orders. Please contact
-                our sales team at bulk@greenfabric.com for quotes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </Container>
   );
 }

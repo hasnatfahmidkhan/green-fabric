@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
@@ -5,11 +6,13 @@ export default function Footer() {
     <footer className=" bg-base-100 text-base-content p-10">
       <div className="footer sm:footer-horizontal max-w-7xl mx-auto">
         <aside>
-          <h3 className="logo">Green Fabric</h3>
+          <Link href={"/"} className="logo">
+            Green Fabric
+          </Link>
           <p>
-            ACME Industries Ltd.
+            Green Fabric Ltd.
             <br />
-            Providing reliable tech since 1992
+            phone: 01898934584
           </p>
         </aside>
         <nav>
@@ -33,6 +36,9 @@ export default function Footer() {
           <a className="link link-hover">Cookie policy</a>
         </nav>
       </div>
+      <p className="text-center text-sm text-accent mt-8">
+        Green Fabric &copy; {new Date().getFullYear()}. All rigths reserved.
+      </p>
     </footer>
   );
 }
