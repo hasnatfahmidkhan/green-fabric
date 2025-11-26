@@ -74,7 +74,11 @@ export default function Products() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {tShirts.length <= 0 ? (
+          {isLoading ? (
+            <div className="col-span-full flex items-center justify-center">
+              <span className="loading loading-bars loading-xl text-primary"></span>
+            </div>
+          ) : tShirts.length <= 0 ? (
             <div className="pt-10 col-span-full flex items-center justify-center">
               <Lottie
                 animationData={noData}
