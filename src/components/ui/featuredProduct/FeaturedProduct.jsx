@@ -25,7 +25,7 @@ export default function FeaturedProduct() {
           Premium Quality Comfort and Style <br /> Every Stitch Designed for You
         </p>
       </div>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {tShirts?.map((tShirt) => (
           <ProductCard key={tShirt._id} tShirt={tShirt} />
         ))}
