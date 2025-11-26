@@ -14,7 +14,7 @@ import {
 
 import reviewQuote from "../../../../public/reviewQuote.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { use, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import Heading from "@/components/Heading";
 
@@ -79,7 +79,7 @@ const Reviews = ({ reviews }) => {
                       : "scale-90 opacity-50 z-0"
                   }`}
                 >
-                  <div className="bg-white rounded-xl shadow-lg p-8 h-72 flex flex-col ">
+                  <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col h-72">
                     <Image width={40} height={40} src={reviewQuote} alt="" />
                     {/* Review Text */}
                     <p className="text-gray-700 text-sm leading-relaxed mb-8 ">

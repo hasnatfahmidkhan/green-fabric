@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import PrimaryBtn from "@/components/PrimaryBtn";
+import Faq from "@/components/ui/Faq/Faq";
 import FeaturedProduct from "@/components/ui/featuredProduct/FeaturedProduct";
 import Service from "@/components/ui/service/Service";
 import Testimonial from "@/components/ui/Testimonial/Testimonial";
@@ -37,6 +38,7 @@ export default async function Home() {
         <FeaturedProduct />
         <Service />
         <Testimonial reviews={data} />
+        <Faq />
       </Container>
     </section>
   );
