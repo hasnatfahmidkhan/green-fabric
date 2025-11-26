@@ -19,12 +19,13 @@ export default function FeaturedProduct() {
 
   return (
     <section>
-      <div className="max-w-4xl mx-auto">
+      <div className="heading-container mb-10">
         <Heading>Featured Products</Heading>
         <p className="sub-heading">
-          Premium Quality Comfort and Style <br /> Every Stitch Designed for You
+          Premium Quality Comfort and Style Every Stitch Designed for You
         </p>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {tShirts?.map((tShirt) => (
           <ProductCard key={tShirt._id} tShirt={tShirt} />

@@ -33,13 +33,13 @@ export default function Products() {
   };
 
   return (
-    <Container>
-      <div className="max-w-4xl w-full mx-auto">
+    <Container className="space-y-16">
+      <div className="heading-container">
         <Heading>All Products</Heading>
         <p className="sub-heading">Quality you can feel in every stitch</p>
       </div>
 
-      <div>
+      <div className="space-y-10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-0">
           <Search />
           <div className="flex items-center gap-4 ">

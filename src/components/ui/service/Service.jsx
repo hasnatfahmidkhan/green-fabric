@@ -72,12 +72,13 @@ export default function Service() {
 
   return (
     <section>
-      <div className="max-w-4xl mx-auto">
+      <div className="heading-container mb-10">
         <Heading>Our Service</Heading>
         <p className="sub-heading">
-          What Makes Green Fabric <br /> T-Shirts Different?
+          What Makes Green Fabric T-Shirts Different?
         </p>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {features.map((feature, index) => {
           const IconComponent = feature.icon;

@@ -3,8 +3,11 @@ import PrimaryBtn from "@/components/PrimaryBtn";
 import FeaturedProduct from "@/components/ui/featuredProduct/FeaturedProduct";
 import Service from "@/components/ui/service/Service";
 import Testimonial from "@/components/ui/Testimonial/Testimonial";
+import axios from "axios";
 
-export default function Home() {
+export default async function Home() {
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/reviews`);
+
   return (
     <section>
       <div
@@ -33,7 +36,7 @@ export default function Home() {
       <Container className={"py-16 md:py-28 space-y-16 md:space-y-28"}>
         <FeaturedProduct />
         <Service />
-        {/* <Testimonial /> */}
+        <Testimonial reviews={data} />
       </Container>
     </section>
   );

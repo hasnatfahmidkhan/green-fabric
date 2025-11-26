@@ -198,7 +198,7 @@ export default function SignUp() {
                     </button>
                     <p className="text-sm text-gray-500 mt-1 tracking-wide">
                       Already have an account?{" "}
-                      <Link className="hover:underline" href={"/signUp"}>
+                      <Link className="hover:underline" href={"/signIn"}>
                         Sign In
                       </Link>
                     </p>
