@@ -1,0 +1,72 @@
+[
+  {
+    "id": 101,
+    "userName": "Sophia K.",
+    "rating": 5,
+    "review": "Absolutely love my new sustainable tee! The fabric is incredibly soft and the fit is perfect. It feels great knowing I'm supporting ethical fashion. Highly recommend!",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": 102,
+    "userName": "Alex R.",
+    "rating": 4,
+    "review": "The quality is fantastic, definitely worth the price. My only minor note is that the color was slightly darker than it appeared online, but still a beautiful shade of emerald.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=2"
+  },
+  {
+    "id": 103,
+    "userName": "Jamie L.",
+    "rating": 5,
+    "review": "I bought this as a gift, and they adored it! The packaging was also eco-friendly, which was a huge plus. Fast shipping and excellent customer service.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=3"
+  },
+  {
+    "id": 104,
+    "userName": "Ethan M.",
+    "rating": 5,
+    "review": "Fantastic durability! I've washed this t-shirt multiple times and it holds its shape and color perfectly. A staple in my conscious closet now.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=4"
+  },
+  {
+    "id": 105,
+    "userName": "Chloe B.",
+    "rating": 3,
+    "review": "It's a good shirt, but I found the sizing runs a bit small. I'd suggest ordering one size up if you prefer a looser fit. Otherwise, great materials.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    "id": 106,
+    "userName": "Noah P.",
+    "rating": 5,
+    "review": "A truly comfortable and breathable shirt. Perfect for all-day wear. It’s hard to find high-quality basics that are also genuinely sustainable, but this brand nails it.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=6"
+  },
+  {
+    "id": 107,
+    "userName": "Olivia D.",
+    "rating": 4,
+    "review": "The fabric is amazing, so soft against the skin. I appreciate the transparency about the supply chain. Lost one star because shipping took a little longer than expected.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=7"
+  },
+  {
+    "id": 108,
+    "userName": "Marcus F.",
+    "rating": 5,
+    "review": "My favourite shirt! The B-Corp certification really sold me. It’s stylish, comfortable, and aligns with my values. Will be buying more colors soon.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=8"
+  },
+  {
+    "id": 109,
+    "userName": "Hannah W.",
+    "rating": 5,
+    "review": "Received my order today and I'm thrilled! The GOTS certification gives me peace of mind. The fit is true to size and the material feels luxurious.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=9"
+  },
+  {
+    "id": 110,
+    "userName": "Liam Z.",
+    "rating": 4,
+    "review": "Great product overall. The color selection is excellent. I wish there were more details on the carbon offsetting efforts mentioned, but the shirt itself is top-notch.",
+    "userPhotoURL": "https://i.pravatar.cc/150?img=10"
+  }
+]

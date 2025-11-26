@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Search() {
+export default function Search({ handleSearch, value }) {
   return (
     <label className="input focus-within:outline-primary border-primary">
       <svg
@@ -19,7 +17,13 @@ export default function Search() {
           <path d="m21 21-4.3-4.3"></path>
         </g>
       </svg>
-      <input type="search" required placeholder="Search" />
+      <input
+        type="search"
+        required
+        value={value}
+        onChange={handleSearch}
+        placeholder="Search"
+      />
     </label>
   );
 }

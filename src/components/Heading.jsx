@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Heading({ children, className }) {
-  return <h2 className="heading">{children}</h2>;
+  return <h2 className={`heading ${className}`}>{children}</h2>;
 }

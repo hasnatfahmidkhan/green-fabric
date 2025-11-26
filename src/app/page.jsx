@@ -33,7 +33,7 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      {/*  service  */}
+
       <Container className={"py-16 md:py-28 space-y-16 md:space-y-28"}>
         <FeaturedProduct />
         <Service />
