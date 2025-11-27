@@ -59,7 +59,7 @@ const Reviews = ({ reviews }) => {
               spaceBetween: 15,
             },
             768: {
-              slidesPerView: 3,
+              slidesPerView: 2,
               spaceBetween: 20,
             },
             1024: {
@@ -67,13 +67,13 @@ const Reviews = ({ reviews }) => {
               spaceBetween: 20,
             },
           }}
-          className="h-full"
+          className="h-full w-sm md:w-2xl lg:w-full mx-auto"
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
               {({ isActive }) => (
                 <div
-                  className={`transition-all duration-300 ${
+                  className={`transition-all duration-300 border border-gray-100 rounded-xl ${
                     isActive
                       ? "scale-100 opacity-100 z-10"
                       : "scale-90 opacity-50 z-0"
