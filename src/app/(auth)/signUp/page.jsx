@@ -130,7 +130,6 @@ export default function SignUp() {
                       Name<span className="text-red-500">*</span>
                     </label>
                     <input
-                      // disabled={authLoading}
                       {...register("name", {
                         required: "Your name is required",
                       })}
@@ -150,7 +149,6 @@ export default function SignUp() {
                       Email<span className="text-red-500">*</span>
                     </label>
                     <input
-                      // disabled={authLoading}
                       {...register("email", {
                         required: "Your email is required",
                       })}
@@ -171,7 +169,6 @@ export default function SignUp() {
                       Password<span className="text-red-500">*</span>
                     </label>
                     <input
-                      // disabled={authLoading}
                       type="password"
                       className="input-style"
                       placeholder="Password"
@@ -192,10 +189,7 @@ export default function SignUp() {
                     )}
                   </div>
                   <div>
-                    <button
-                      // disabled={authLoading}
-                      className="btn btn-primary my-2 w-full disabled:bg-primary disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
+                    <button className="btn btn-primary my-2 w-full disabled:bg-primary disabled:opacity-70 disabled:cursor-not-allowed">
                       Sign Up
                     </button>
                     <p className="text-sm text-gray-500 mt-1 tracking-wide">
