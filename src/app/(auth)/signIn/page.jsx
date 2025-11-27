@@ -3,13 +3,10 @@ import Container from "@/components/Container";
 import SocialLogin from "@/components/SocialLogin";
 import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export default function SignIn() {
-  const searchParams = useSearchParams();
-  const next = searchParams.get("next") || "/";
-
   const {
     register,
     handleSubmit,
@@ -31,7 +28,7 @@ export default function SignIn() {
     const currentUser = res.user;
     setUser(currentUser);
     setAuthLoading(false);
-    router.push(next);
+    router.push("/");
   };
 
   // sign in with google
@@ -40,7 +37,7 @@ export default function SignIn() {
       const res = await googleSignIn();
       const currentUser = res.user;
       setUser(currentUser);
-      router.push(next);
+      router.push("/");
       console.log(currentUser);
     } catch (error) {
       toast.error(error.message);
