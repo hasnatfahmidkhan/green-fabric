@@ -1,10 +1,11 @@
 "use client";
 
 import useAuth from "@/hooks/useAuth";
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 export default function ProtectedRoutes({ children }) {
   const { user, authLoading } = useAuth();
+  const pathName = usePathname();
 
   if (authLoading)
     return (
@@ -13,7 +14,7 @@ export default function ProtectedRoutes({ children }) {
       </div>
     );
 
-  if (!user) redirect("/signIn");
+  if (!user) redirect(`/signIn?next=${pathName}`);
 
   return children;
 }

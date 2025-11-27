@@ -4,12 +4,14 @@ import SocialLogin from "@/components/SocialLogin";
 import useAuth from "@/hooks/useAuth";
 import { uploadImage } from "@/utils";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function SignUp() {
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") || "/";
   const {
     googleSignIn,
     setAuthLoading,
@@ -41,7 +43,7 @@ export default function SignUp() {
       };
       await updatePfoileFunc(upadateData);
       setUser(currentUser);
-      router.push("/");
+      router.push(next);
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -55,7 +57,7 @@ export default function SignUp() {
       const res = await googleSignIn();
       const currentUser = res.user;
       setUser(currentUser);
-      router.push("/");
+      router.push(next);
     } catch (error) {
       toast.error(error.message);
     } finally {
