@@ -1,6 +1,8 @@
 import Container from "@/components/Container";
-import React from "react";
-
 export default function Profile() {
-  return <Container>Profile</Container>;
+  return (
+    <Container>
+      <h2 className="text-center text-2xl">Profile Page Update soon!</h2>
+    </Container>
+  );
 }
