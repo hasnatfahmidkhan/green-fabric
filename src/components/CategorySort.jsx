@@ -21,6 +21,9 @@ export default function CategorySort({ setCategory }) {
       <option disabled={true} value={""}>
         Select Category
       </option>
+      <option disabled={true} value={""}>
+        All
+      </option>
       {categories?.map((cat) => (
         <option value={cat.name} key={cat._id}>
           {cat.name}
