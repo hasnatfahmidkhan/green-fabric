@@ -27,9 +27,15 @@ export default function FeaturedProduct() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {tShirts?.map((tShirt) => (
-          <ProductCard key={tShirt._id} tShirt={tShirt} />
-        ))}
+        {isLoading ? (
+          <div className="col-span-full flex items-center justify-center">
+            <span className="loading loading-bars loading-xl text-primary"></span>
+          </div>
+        ) : (
+          tShirts?.map((tShirt) => (
+            <ProductCard key={tShirt._id} tShirt={tShirt} />
+          ))
+        )}
       </div>
     </section>
   );
