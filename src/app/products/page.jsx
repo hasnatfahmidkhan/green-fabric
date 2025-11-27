@@ -67,6 +67,7 @@ export default function Products() {
               <option disabled value="">
                 Sort By Price
               </option>
+              <option value="">All</option>
               <option value="price-asc">Low to High</option>
               <option value="price-desc">High to Low</option>
             </select>
