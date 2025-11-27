@@ -67,7 +67,7 @@ const Reviews = ({ reviews }) => {
               spaceBetween: 20,
             },
           }}
-          className="h-full w-sm md:w-2xl lg:w-full mx-auto"
+          className="h-full w-[360px] md:w-2xl lg:w-full mx-auto"
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
